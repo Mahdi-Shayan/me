@@ -49,7 +49,7 @@ function OrbitingCircles({
         return (
           <div
             className={twMerge(
-              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full md:right-0 md:bottom-2 bottom-1 xl:right-1 ${
+              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full md:right-0 md:bottom-2 bottom-1 lg:right-2 ${
                 reverse ? "[animation-direction:reverse]" : ""
               }`,
               className

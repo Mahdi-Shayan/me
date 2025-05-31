@@ -1,3 +1,5 @@
+"use client"
+
 import OrbitingCircles from "./OrbitingCircles";
 
 function Carousel() {

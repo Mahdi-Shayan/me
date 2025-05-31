@@ -12,7 +12,7 @@ const RecentProjects = () => {
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center justify-center p-4 gap-16 mt-10 w-max mx-auto">
         {projects.map((item) => (
           <div
             className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
@@ -29,7 +29,7 @@ const RecentProjects = () => {
                 <img
                   src={item.img}
                   alt="cover"
-                  className="z-10 absolute bottom-0 rotate-3 scale-95 rounded-lg"
+                  className="z-10 absolute bottom-0 rotate-3 scale-95 max-lg:-bottom-7 rounded-lg"
                 />
               </div>
 
@@ -57,7 +57,11 @@ const RecentProjects = () => {
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
                     >
-                      <img src={`/logos${icon}`} alt="icon5" className="p-2" />
+                      <img
+                        src={`/logos${icon}`}
+                        alt="icon5"
+                        className="p-2"
+                      />
                     </div>
                   ))}
                 </div>
