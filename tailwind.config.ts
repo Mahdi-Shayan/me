@@ -82,6 +82,22 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        orbit: {
+          from: {
+            transform: `
+              rotate(calc(var(--angle) * 1deg)) 
+              translateY(calc(var(--radius))) 
+              rotate(calc(var(--angle) * -1deg))
+            `,
+          },
+          to: {
+            transform: `
+              rotate(calc(var(--angle) * 1deg + 360deg)) 
+              translateY(calc(var(--radius))) 
+              rotate(calc((var(--angle) * -1deg) - 360deg))
+            `,
+          },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -148,6 +164,7 @@ const config = {
         },
       },
       animation: {
+        orbit: "orbit var(--duration) linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         spotlight: "spotlight 2s ease .75s 1 forwards",
@@ -184,7 +201,10 @@ const config = {
             )}")`,
           }),
         },
-        { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
+        {
+          values: flattenColorPalette(theme("backgroundColor")),
+          type: "color",
+        }
       );
     },
   ],

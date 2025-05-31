@@ -118,7 +118,7 @@ export const InfiniteMovingCards = ({
               {/* change text color, text-lg */}
               <p>{p.subDes}</p>
               <div className="flex gap-3 items-center mt-5">
-                <div className="w-28 h-16 rounded-lg overflow-hidden"> 
+                <div className="w-32 h-20 rounded-lg overflow-hidden"> 
                   <img src={p.img} alt={p.title} />
                 </div>
                 <div>
