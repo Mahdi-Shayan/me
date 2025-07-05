@@ -87,6 +87,7 @@ export const projects = [
       "/redis.svg",
       "/shadcn.svg",
     ],
+    inProgress: true,
     link: "/ms-university-library.netlify.app",
   },
   {
@@ -103,6 +104,7 @@ export const projects = [
       "/getstream.svg",
       "/clerk.svg",
     ],
+    inProgress: true,
     link: "/ms-zoom-clone.netlify.app",
   },
   {
@@ -118,6 +120,7 @@ export const projects = [
       "/sass.svg",
       "/motion.svg",
     ],
+    inProgress: false,
     link: "/ms-animate-portfolio.netlify.app",
   },
   {
@@ -134,6 +137,7 @@ export const projects = [
       "/gsap.svg",
       "/motion.svg",
     ],
+    inProgress: false,
     link: "/ms-iphone-challenge.netlify.app",
   },
   {
@@ -146,10 +150,9 @@ export const projects = [
       "/react.svg",
       "/javascript.svg",
       "/sass.svg",
-      "/threejs.svg",
-      "/gsap.svg",
-      "/motion.svg",
+      ""
     ],
+    inProgress: false,
     link: "/ms-iphone-challenge.netlify.app",
   },
 ];
