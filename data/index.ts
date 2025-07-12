@@ -127,7 +127,8 @@ export const projects = [
     id: 4,
     title: "Animated Apple Iphone 3D Website",
     des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    subDes: "modern iPhone landing page with smooth animtion powered by Framer Motion and iPhone model Three js with changing color and size and other more features.",
+    subDes:
+      "modern iPhone landing page with smooth animtion powered by Framer Motion and iPhone model Three js with changing color and size and other more features.",
     img: "/p4.webp",
     iconLists: [
       "/react.svg",
@@ -144,13 +145,14 @@ export const projects = [
     id: 5,
     title: "Query Countries",
     des: "A web application that allows users to query country information using a REST API.",
-    subDes: "Utilized React and Axios to fetch data from a REST API with React-Query, displaying country information in a user-friendly manner, including features like search and filtering, and routing details page and handle data loading skeleton.",
+    subDes:
+      "Utilized React and Axios to fetch data from a REST API with React-Query, displaying country information in a user-friendly manner, including features like search and filtering, and routing details page and handle data loading skeleton.",
     img: "/p5.webp",
     iconLists: [
       "/react.svg",
       "/javascript.svg",
       "/sass.svg",
-      ""
+      "/react-query.svg",
     ],
     inProgress: false,
     link: "/ms-iphone-challenge.netlify.app",
@@ -225,14 +227,14 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
-    link: 'https://github.com/Mahdi-Shayan',
-    alt: 'github'
+    link: "https://github.com/Mahdi-Shayan",
+    alt: "github",
   },
   {
     id: 2,
     img: "/wha.svg",
-    link: 'https://wa.me/09105779290',
-    alt: 'whatsapp'
+    link: "https://wa.me/09105779290",
+    alt: "whatsapp",
   },
   // {
   //   id: 3,
