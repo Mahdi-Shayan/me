@@ -4,6 +4,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
+import Link from "next/link";
 
 const RecentProjects = () => {
   return (
@@ -14,7 +15,9 @@ const RecentProjects = () => {
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center justify-center p-4 gap-16 mt-10 w-max mx-auto">
         {projects.map((item) => (
-          <div
+          <Link
+            href={item.link}
+            target="_blank"
             className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
             key={item.id}
           >
@@ -78,7 +81,7 @@ const RecentProjects = () => {
                 </div>
               </div>
             </PinContainer>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
