@@ -155,7 +155,7 @@ export const projects = [
       "/react-query.svg",
     ],
     inProgress: false,
-    link: "https://ms-query-cuntries.netlify.app",
+    link: "https://ms-query-cuontries.netlify.app",
   },
 ];
 
