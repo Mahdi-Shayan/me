@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import { ThemeProvider } from "./provider";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/me.svg" sizes="any" />
       </head>
-      <body className={inter.className}>
+      <body className={cn(inter.className, "overflow-x-hidden")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

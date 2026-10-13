@@ -4,22 +4,22 @@ import { FaLocationArrow } from "react-icons/fa6";
 
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
-import Link from "next/link";
 
 const RecentProjects = () => {
   return (
-    <div className="py-20">
+    <div className="py-20" id="projects">
       <h1 className="heading">
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center justify-center p-4 gap-16 mt-10 w-max mx-auto">
         {projects.map((item) => (
-          <Link
-            href={item.link}
-            target="_blank"
-            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+          <div
+            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw] cursor-pointer"
             key={item.id}
+            onClick={() =>
+              window.open(item.link, "_blank", "noopener,noreferrer")
+            }
           >
             <PinContainer title={item.link} href={item.link}>
               <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
@@ -81,7 +81,7 @@ const RecentProjects = () => {
                 </div>
               </div>
             </PinContainer>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

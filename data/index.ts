@@ -84,10 +84,9 @@ export const projects = [
       "/tailwindcss.svg",
       "/auth.svg",
       "/postgresql.svg",
-      "/redis.svg",
       "/shadcn.svg",
     ],
-    inProgress: true,
+    // inProgress: true,
     link: "https://ms-university-library.netlify.app",
   },
   {
@@ -104,7 +103,7 @@ export const projects = [
       "/getstream.svg",
       "/clerk.svg",
     ],
-    inProgress: true,
+    // inProgress: true,
     link: "https://ms-zoom-clone.netlify.app",
   },
   {
@@ -143,19 +142,21 @@ export const projects = [
   },
   {
     id: 5,
-    title: "Query Countries",
-    des: "A web application that allows users to query country information using a REST API.",
+    title: "Royal Home",
+    des: "Sofa and furniture Brand Showcase website with a focus on user experience and design.",
     subDes:
-      "Utilized React and Axios to fetch data from a REST API with React-Query, displaying country information in a user-friendly manner, including features like search and filtering, and routing details page and handle data loading skeleton.",
-    img: "/p5.webp",
+      "Royal Home is a showcase website for a sofa and furniture brand, designed with a focus on user experience and design. It features responsive layouts, and an intuitive interface to highlight the brand's products effectively.",
+    img: "/p6.png",
     iconLists: [
-      "/react.svg",
-      "/javascript.svg",
-      "/sass.svg",
-      "/react-query.svg",
+      "/nextjs.svg",
+      "/typescript.svg",
+      "/tailwindcss.svg",
+      "/auth.svg",
+      "/mongodb.svg",
+      "/shadcn.svg",
     ],
     inProgress: false,
-    link: "https://ms-query-cuontries.netlify.app",
+    link: "https://royalhom.co",
   },
 ];
 

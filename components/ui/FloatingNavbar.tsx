@@ -1,16 +1,12 @@
 "use client";
-import React, { useState } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useMotionValueEvent,
-} from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export const FloatingNav = ({
   navItems,
+  logo,
   className,
 }: {
   navItems: {
@@ -18,79 +14,81 @@ export const FloatingNav = ({
     link: string;
     icon?: JSX.Element;
   }[];
+  logo?: React.ReactNode;
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
-
-  // set true for the initial state so that nav bar is visible in the hero section
   const [visible, setVisible] = useState(true);
+  const [hasEntered, setHasEntered] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const [headerHeight, setHeaderHeight] = useState(100);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+  }, []);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
-    // Check if current is not undefined and is a number
     if (typeof current === "number") {
-      let direction = current! - scrollYProgress.getPrevious()!;
+      const direction = current - (scrollYProgress.getPrevious() ?? 0);
 
       if (scrollYProgress.get() < 0.05) {
-        // also set true for the initial state
         setVisible(true);
       } else {
-        if (direction < 0) {
-          setVisible(true);
-        } else {
-          setVisible(false);
-        }
+        setVisible(direction < 0);
       }
     }
   });
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        initial={{
-          opacity: 1,
-          y: -100,
-        }}
-        animate={{
-          y: visible ? 0 : -100,
-          opacity: visible ? 1 : 0,
-        }}
-        transition={{
-          duration: 0.2,
-        }}
-        className={cn(
-          // change rounded-full to rounded-lg
-          // remove dark:border-white/[0.2] dark:bg-black bg-white border-transparent
-          // change  pr-2 pl-8 py-2 to px-10 py-5
-          "flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-5 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-center space-x-4",
-          className
+    <motion.header
+      ref={headerRef}
+      initial={{ opacity: 0, y: -(headerHeight * 1.1) }}
+      animate={{
+        y: visible ? 0 : -(headerHeight * 1.1),
+        opacity: visible ? 1 : 0,
+      }}
+      transition={{
+        duration: hasEntered ? 0.2 : 0.5,
+        ease: "easeOut",
+        delay: hasEntered ? 0 : 1.5,
+      }}
+      onAnimationComplete={() => setHasEntered(true)}
+      className={cn(
+        "fixed z-[5000] top-10 inset-x-0 mx-auto w-[90%] flex items-center justify-between px-6 md:px-10 py-4 rounded-xl will-change-transform",
+        className,
+      )}
+      style={{
+        backdropFilter: "blur(16px) saturate(180%)",
+        backgroundColor: "rgba(17, 25, 40, 0.75)",
+        border: "1px solid rgba(255, 255, 255, 0.125)",
+        boxShadow:
+          "0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)",
+      }}
+    >
+      {/* لوگو */}
+      <Link href="/" className="flex items-center shrink-0">
+        {logo ?? (
+          <span className="text-lg font-bold text-white">Logo</span>
         )}
-        style={{
-          backdropFilter: "blur(16px) saturate(180%)",
-          backgroundColor: "rgba(17, 25, 40, 0.75)",
-          borderRadius: "12px",
-          border: "1px solid rgba(255, 255, 255, 0.125)",
-        }}
-      >
-        {navItems.map((navItem: any, idx: number) => (
+      </Link>
+
+      {/* لینک‌ها */}
+      <nav className="flex items-center space-x-4 md:space-x-6">
+        {navItems.map((navItem, idx) => (
           <Link
-            key={`link=${idx}`}
+            key={`link-${idx}`}
             href={navItem.link}
-            className={cn(
-              "relative dark:text-neutral-50 items-center  flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
-            )}
+            className="relative flex items-center space-x-1 text-neutral-50 hover:text-neutral-300"
           >
             <span className="block sm:hidden">{navItem.icon}</span>
-            {/* add !cursor-pointer */}
-            {/* remove hidden sm:block for the mobile responsive */}
-            <span className=" text-sm !cursor-pointer">{navItem.name}</span>
+            <span className="text-sm !cursor-pointer hidden sm:block">
+              {navItem.name}
+            </span>
           </Link>
         ))}
-        {/* remove this login btn */}
-        {/* <button className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
-          <span>Login</span>
-          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
-        </button> */}
-      </motion.div>
-    </AnimatePresence>
+      </nav>
+    </motion.header>
   );
 };
